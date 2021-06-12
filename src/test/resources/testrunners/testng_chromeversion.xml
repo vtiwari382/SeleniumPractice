@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+<suite name="TN Test automtion regression suite" parallel="tests"
+	thread-count="5">
+
+	<listeners>
+		<listener
+			class-name="com.qa.saucedemo.testlisteners.ExtentReportListener" />
+		<listener
+			class-name="com.qa.saucedemo.testlisteners.TestAllureListener" />
+
+		<listener
+			class-name="com.qa.saucedemo.testlisteners.TesultsListener" />
+	</listeners>
+	
+	<test name="LoginPage Test_Chrome_64">
+		<parameter name="browser" value="chrome"/>
+		<parameter name="version" value="64" />
+		<classes>
+			<class name="com.qa.saucedemo.tests.LoginPageTest" />
+		</classes>
+	</test>
+
+	<test name="LoginPage Test_Chrome_85">
+		<parameter name="browser" value="chrome"/>
+		<parameter name="version" value="85" />
+		<classes>
+			<class name="com.qa.saucedemo.tests.LoginPageTest" />
+		</classes>
+	</test>
+	
+	<test name="LoginPage Test_Chrome_87">
+		<parameter name="browser" value="chrome"/>
+		<parameter name="version" value="87" />
+		<classes>
+			<class name="com.qa.saucedemo.tests.LoginPageTest" />
+		</classes>
+	</test>
+	
+	<test name="ProductInfoPage Test_Chrome_64">
+		<parameter name="browser" value="chrome"/>
+		<parameter name="version" value="64" />
+		<classes>
+			<class name="com.qa.saucedemo.tests.ProductPageTest" />
+		</classes>
+	</test>
+	
+	<test name="ProductInfoPage Test_Chrome_85">
+		<parameter name="browser" value="chrome"/>
+		<parameter name="version" value="85" />
+		<classes>
+			<class name="com.qa.saucedemo.tests.ProductPageTest" />
+		</classes>
+	</test>
+	
+	<test name="ProductInfoPage Test_Chrome_87">
+		<parameter name="browser" value="chrome"/>
+		<parameter name="version" value="87" />
+		<classes>
+			<class name="com.qa.saucedemo.tests.ProductPageTest" />
+		</classes>
+	</test>
+	
+	<test name="AddToCartPage Test_Chrome_64">
+		<parameter name="browser" value="chrome"/>
+		<parameter name="version" value="64" />
+		<classes>
+			<class name="com.qa.saucedemo.tests.AddToCartPageTest" />
+		</classes>
+	</test>
+
+	<test name="AddToCartPage Test_Chrome_85">
+		<parameter name="browser" value="chrome"/>
+		<parameter name="version" value="85" />
+		<classes>
+			<class name="com.qa.saucedemo.tests.AddToCartPageTest" />
+		</classes>
+	</test>
+	
+	<test name="AddToCartPage Test_Chrome_87">
+		<parameter name="browser" value="chrome"/>
+		<parameter name="version" value="87" />
+		<classes>
+			<class name="com.qa.saucedemo.tests.AddToCartPageTest" />
+		</classes>
+	</test>
+
+</suite>
