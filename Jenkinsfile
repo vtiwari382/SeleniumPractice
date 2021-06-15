@@ -1,47 +1,45 @@
 pipeline { 
 agent any 
-    stages {        
+    stages { 
+        
         stage ('Build') { 
             steps{
                 echo "Building"
             }
         }
         
-        stage('Deploy to QA') {
+        stage('Test') {
             steps {
-				echo "Deploy to QA" 
-            }
-        }
-                    
-        stage('Test On QA') {
-           steps {
-                echo "Regression Test on QA"
-            }
-        }
-        
-        
-        stage('Deploy To Stage') {
-           steps {
-                echo "Deploy to Stage"
-            }
-        }
-		
-		stage('Test On Stage') {
-           steps {
-                echo "Sanity Test on Stage"
-            }
-        }
-        
-		stage('Deploy On Production') {
-           steps {
-                echo "Deploy to Production"
-            }
-        }
-		
-		stage('Monitor') {
-           steps {
-                echo "Monitor the Prod logs"
+                catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
+                    sh "mvn clean install"
+                }
             }
         }                
+     
+        stage('Publish Allure Reports') {
+           steps {
+                script {
+                    allure([
+                        includeProperties: false,
+                        jdk: '',
+                        properties: [],
+                        reportBuildPolicy: 'ALWAYS',
+                        results: [[path: '/allure-results']]
+                    ])
+                }
+            }
+        }        
+        
+        stage('Publish Extent Report'){
+            steps{
+                     publishHTML([allowMissing: false,
+                                  alwaysLinkToLastBuild: false, 
+                                  keepAll: false, 
+                                  reportDir: 'build', 
+                                  reportFiles: 'TestExecutionReport.html', 
+                                  reportName: 'HTML Extent Report', 
+                                  reportTitles: ''])
+            }
+        }                        
     }
  }
