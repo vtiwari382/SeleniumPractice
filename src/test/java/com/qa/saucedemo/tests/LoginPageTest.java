@@ -6,9 +6,13 @@ import org.testng.annotations.Test;
 import com.qa.saucedemo.base.BaseTest;
 
 import io.qameta.allure.Description;
+import io.qameta.allure.Epic;
 import io.qameta.allure.Severity;
 import io.qameta.allure.SeverityLevel;
+import io.qameta.allure.Story;
 
+@Epic("Epic 100: define loing page features....")
+@Story("US 101: define the login page class features with title, forgot pwd link and login functionality")
 public class LoginPageTest extends BaseTest {
 	
 	@Description("Verify the Login Page Title")
